@@ -16,6 +16,10 @@ from hanziconv import HanziConv
 from pypinyin import slug
 
 
+SOURCE = '../covid2019-sources'
+TARGET = '../covid2019-memories'
+
+
 nlp = spacy.load('en')
 
 
@@ -61,9 +65,9 @@ def tranlate(source, direction, field=''):
     return translation
 
 
-for f in sorted(glob.glob('memories/cn/*/*.o.zh-chs.md')):
+for f in sorted(glob.glob('%s/memories/cn/*/*.o.zh-chs.md' % SOURCE)):
     ppth, bname = path.split(f)
-    tpth = '../covid2019-memories/%s' % ppth
+    tpth = '%s/%s' % (TARGET, ppth[len(SOURCE):])
     Path(tpth).mkdir(parents=True, exist_ok=True)
 
     if ppth > 'memories/cn/2020-01-27/':

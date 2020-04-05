@@ -14,6 +14,11 @@ from pyquery import PyQuery as pq
 from wand.image import Image
 
 
+SOURCE = ''
+TARGET = '../covid2019-sources'
+
+
+
 def handle_img(url, cover=True):
     time.sleep(0.3)
     dataurl = None
@@ -121,7 +126,7 @@ with codecs.open('data/chronological.csv', encoding='utf-8') as f:
         ln = ln[:-1].strip()
         date, source, title, link, snapshot, archive = ln.split(', ')
 
-        if date > '2020-02-08':
+        if '2020-01-20' < date < '2020-03-31':
             print('- %s %s %s %s' % (date, source, title, link))
             title2, lead, cover, text = download(link)
 
@@ -151,7 +156,7 @@ with codecs.open('data/chronological.csv', encoding='utf-8') as f:
                 hash = hashlib.md5(title.encode()).hexdigest()
                 print(hash)
 
-                pth = 'memories/cn/%s/%s.o.zh-chs.md' % (date, hash)
+                pth = '%s/memories/cn/%s/%s.o.zh-chs.md' % (TARGET, date, hash)
                 bpth, _ = path.split(pth)
                 Path(bpth).mkdir(parents=True, exist_ok=True)
                 with codecs.open(pth, encoding='utf-8', mode='w') as g:

@@ -4,6 +4,9 @@ import re
 import codecs
 
 
+SOURCE = ''
+TARGET = ''
+
 re_src = re.compile('^###.+$')
 re_itm = re.compile('^\|\d\d-\d\d\|[^|]+\|\[link\]\(https://mp.weixin.qq.com/[^|]+\|[^|]+\|[^|]+\|[^|]+\|$')
 
