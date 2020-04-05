@@ -14,6 +14,7 @@ webpreview
 wand
 
 snownlp
+hanlp
 spacy
 spacy-lookups-data
 
